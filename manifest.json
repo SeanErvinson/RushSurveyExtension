@@ -1,0 +1,24 @@
+{
+    "manifest_version": 2,
+    "name": "Rush B Extension",
+    "version": "0.0.1",
+    "description": "Speed through the entire UST survey",
+    "content_scripts": [
+        {
+            "matches": [
+                "*://myuste.ust.edu.ph/*"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ],
+    "permissions": [
+        "tabs"
+    ],
+    "browser_action": {
+        "default_icon": "icon.png",
+        "default_popup": "sketch/index.html",
+        "default_title": "Speed through the entire UST survey"
+    }
+}
