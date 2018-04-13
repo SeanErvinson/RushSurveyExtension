@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
             active: true,
             currentWindow: true
         }
-        chrome.tabs.query(params, gotTabs);
+        browser.tabs.query(params, gotTabs);
 
         function gotTabs(tabs) {
             let ratingMessage =
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     minValue: minNumber,
                     maxValue: maxNumber
                 }
-            chrome.tabs.sendMessage(tabs[0].id, ratingMessage);
+            browser.tabs.sendMessage(tabs[0].id, ratingMessage);
         }
     });
 });

@@ -1,4 +1,4 @@
-chrome.runtime.onMessage.addListener(executeMessage);
+browser.runtime.onMessage.addListener(executeMessage);
 console.log("Content Ready");
 
 function executeMessage(message, sender, sendResponse) {
@@ -6,7 +6,9 @@ function executeMessage(message, sender, sendResponse) {
 }
 
 function generateRandom(min = 1, max = 4) {
-    return Math.floor(Math.random() * (max - min + 1) + min) + 1;
+    var minNum = parseInt(min);
+    var maxNum = parseInt(max);
+    return Math.floor(Math.random() * (maxNum - minNum + 1) + minNum);
 }
 
 function automateSurvey(value = null, min = null, max = null, isRandom = false) {
