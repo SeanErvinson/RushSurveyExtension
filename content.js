@@ -1,4 +1,5 @@
 chrome.runtime.onMessage.addListener(executeMessage);
+console.log("Content Ready");
 
 function executeMessage(message, sender, sendResponse) {
     automateSurvey(message.rateValue, message.minValue, message.maxValue, message.isRandom);
@@ -16,7 +17,8 @@ function automateSurvey(value = null, min = null, max = null, isRandom = false) 
         else
             questions[i].value = value;
         var currentId = questions[i].id;
-        rating = document.getElementById(`spnRating-${currentId.slice(currentId.length - 3, currentId.length)}-${questions[i].value}`);
+        currentId = currentId.slice(currentId.lastIndexOf("-") + 1, currentId.length);
+        rating = document.getElementById(`spnRating-${currentId}-${questions[i].value}`);
         rating.parentElement.click();
     }
 }
