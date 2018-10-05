@@ -1,4 +1,8 @@
-browser.runtime.onMessage.addListener(executeMessage);
+if(chrome){
+    chrome.runtime.onMessage.addListener(executeMessage);
+}else{
+    browser.runtime.onMessage.addListener(executeMessage);
+}
 console.log("Content Ready");
 
 function executeMessage(message, sender, sendResponse) {

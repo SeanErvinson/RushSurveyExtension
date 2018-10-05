@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
-    
+
     // Div
     var minmaxDiv = document.getElementById("minmax");
     var valueDiv = document.getElementById("value");
 
     // Default state
     minmaxDiv.style.display = 'none';
-    
+
     var toggle = document.getElementById("toggleRandom");
 
     toggle.addEventListener('click', function () {
@@ -35,7 +35,11 @@ document.addEventListener('DOMContentLoaded', function () {
             active: true,
             currentWindow: true
         }
-        browser.tabs.query(params, gotTabs);
+        if(chrome){
+            chrome.tabs.query(params, gotTabs);
+        }else{
+            browser.tabs.query(params, gotTabs);
+        }
 
         function gotTabs(tabs) {
             let ratingMessage =
@@ -45,7 +49,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     minValue: minNumber,
                     maxValue: maxNumber
                 }
-            browser.tabs.sendMessage(tabs[0].id, ratingMessage);
+            if(chrome){
+                chrome.tabs.sendMessage(tabs[0].id, ratingMessage);
+            }else{
+                browser.tabs.sendMessage(tabs[0].id, ratingMessage);
+            }
         }
     });
 });
